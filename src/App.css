@@ -1,0 +1,3 @@
+.base-Slider-mark:not(.base-Slider-markActive) {
+    border-color: #CCCCCC;
+}
