@@ -30,7 +30,8 @@ export default function Form() {
         console.log(res);
         if (res.status === 200) {
             setStep(step => step + 1)
-            formMethods.reset()
+            formMethods.reset();
+            setLoading(false);
             return res
         }
         alert("Something went wrong! Please try again.")
