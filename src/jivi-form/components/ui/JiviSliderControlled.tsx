@@ -26,9 +26,6 @@ const JiviSliderControlledPicker: React.FC<JiviSliderControlledProps> = (props: 
                 max={props.max}
                 defaultValue={props.defaultValue}
                 slots={{ valueLabel: SliderValueLabel }}
-                // onChangeCommitted={(e, value) => {
-                //     field.onChange(value as number);
-                // }
                 {...field}
             />
         )}

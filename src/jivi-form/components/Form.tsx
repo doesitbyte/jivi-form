@@ -8,6 +8,8 @@ import Preview from './form-steps/Preview'
 import { Button } from 'antd'
 import Success from './form-steps/Success'
 import axios from 'axios'
+import AgePicker from './form-steps/Age'
+import WeightPicker from './form-steps/Weight'
 
 export default function Form() {
     const [step, setStep] = useState(0)
@@ -21,6 +23,8 @@ export default function Form() {
             bpDia: 75,
             bpSys: 140,
             heartRate: 90,
+            age: 25,
+            weight: 60,
         }
     })
 
@@ -45,19 +49,19 @@ export default function Form() {
 
     return (
         <>
-            <main className='w-full sm:w-2/3 lg:w-1/2 min-h-full flex flex-col items-stretch  justify-between my-8 mx-4'>
+            <main className='w-full sm:w-2/3 lg:w-1/2 min-h-full flex flex-col items-stretch justify-between my-8 mx-4'>
                 {/* Form */}
                 <div className='basis-11/12'>
                     <form className='flex flex-col min-w-full min-h-full' onSubmit={formMethods.handleSubmit(processForm)}>
                         <div className='grow flex-col'>
                             {step === 0 && (
                                 <motion.div
-                                    className='min-h-full'
                                     initial={{ y: '100%', opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                                 >
                                     <Details formMethods={formMethods} />
+
                                 </motion.div>
                             )}
 
@@ -67,11 +71,31 @@ export default function Form() {
                                     animate={{ x: 0, opacity: 1 }}
                                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                                 >
-                                    <Preview formMethods={formMethods} />
+                                    <WeightPicker formMethods={formMethods} />
                                 </motion.div>
                             )}
 
                             {step === 2 && (
+                                <motion.div
+                                    initial={{ x: '100%', opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                >
+                                    <AgePicker formMethods={formMethods} />
+                                </motion.div>
+                            )}
+
+                            {step === 3 && (
+                                <motion.div
+                                    initial={{ x: '100%', opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                >
+                                    <Preview formMethods={formMethods} />
+                                </motion.div>
+                            )}
+
+                            {step === 4 && (
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
@@ -87,7 +111,7 @@ export default function Form() {
                 {/* Navigation */}
                 <nav className='basis-1/12'>
                     <div className='mt-4'>
-                        {step === 0
+                        {(step === 0 || step === 1 || step === 2)
                             && (
                                 <motion.div
                                     initial={{ y: '100%', opacity: 0 }}
@@ -107,7 +131,7 @@ export default function Form() {
                                 </motion.div>
                             )}
 
-                        {step === 1
+                        {step === 3
                             && (
                                 <motion.div
                                     initial={{ x: '100%', opacity: 0 }}
@@ -137,7 +161,7 @@ export default function Form() {
                                 </motion.div>
                             )}
 
-                        {step === 2
+                        {step === 4
                             && (
                                 <motion.div
                                     initial={{ y: '100%', opacity: 0 }}

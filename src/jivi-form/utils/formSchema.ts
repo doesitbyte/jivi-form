@@ -32,7 +32,9 @@ export const FormDataSchema = z.object({
 
       return { message: 'This field is required' };
     },
-  })
+  }),
+  age: z.number(),
+  weight: z.number(),
 });
 
 export type TFormDataSchema = z.infer<typeof FormDataSchema>;
