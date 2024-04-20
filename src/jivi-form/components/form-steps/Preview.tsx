@@ -66,14 +66,14 @@ const Preview: FormPageComponent = ({ formMethods }) => {
                     <KeyComponent keyName={"Gender: "} />
                     <ValueCol value={GenderEnum[values.gender]} />
                 </Row>
-                {/* <Row>
+                <Row>
                     <KeyComponent keyName={"Weight: "} />
-                    <ValueCol value={"65".toString() + "kg"} />
+                    <ValueCol value={values.weight.toString() + " kg"} />
                 </Row>
                 <Row>
                     <KeyComponent keyName={"Age: "} />
-                    <ValueCol value={"25".toString() + "years"} />
-                </Row> */}
+                    <ValueCol value={values.age.toString() + " years"} />
+                </Row>
             </div>
         </section >
     </div>
