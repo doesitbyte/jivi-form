@@ -27,9 +27,7 @@ export const FormDataSchema = z.object({
     }
   ),
   gender: z.nativeEnum(GenderEnum, {
-    errorMap: (issue, _ctx) => {
-      console.log(issue);
-
+    errorMap: (_ctx) => {
       return { message: 'This field is required' };
     },
   }),

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { FormPageComponent } from "../../utils/formPageProps";
 import JiviHeader from "../ui/JiviHeader";
-import { InputNumber } from 'antd';
-import { Controller } from "react-hook-form";
+import JiviWeightPicker from "../ui/JiviWeightPicker";
 
 
 const WeightPicker: FormPageComponent = ({ formMethods }) => {
@@ -48,17 +47,10 @@ const WeightPicker: FormPageComponent = ({ formMethods }) => {
                 <span className="ml-2 text-[24px] font-semibold text-jiviDarkGray">{kgs ? "kgs" : "lbs"}</span>
             </div>
             <div>
-                <Controller
+                <JiviWeightPicker
                     name="weight"
                     control={formMethods.control}
-                    render={({ field }) => (
-                        <InputNumber
-                            className="w-full"
-                            min={1}
-                            defaultValue={60}
-                            onChange={field.onChange}
-                            changeOnWheel />
-                    )} />
+                />
             </div>
         </>
     )
