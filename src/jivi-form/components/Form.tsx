@@ -62,8 +62,7 @@ export default function Form() {
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ duration: 0.3, ease: 'easeInOut' }}
                             >
-                                {/* <Details formMethods={formMethods} /> */}
-                                <WeightPicker formMethods={formMethods} />
+                                <Details formMethods={formMethods} />
 
                             </motion.div>
                         )}
