@@ -62,9 +62,15 @@ const JiviWeightPicker = (props: JiviWeightPickerProps) => {
         if (pickerRef.current) {
             if (e.pageX - pickerRef.current.offsetLeft == startX) {
                 pickerRef.current.scrollLeft = (Math.ceil((e.pageX - pickerRef.current.offsetLeft + pickerRef.current.scrollLeft) / 16) - 24) * 16;
+                const currentSelected = Math.ceil(pickerRef.current.scrollLeft / 16) + 1;
+                setSelectedValue(currentSelected);
+                setIsMouseDown(false);
+                return currentSelected;
             }
         }
         setIsMouseDown(false);
+
+        return selectedValue;
     }
 
     const handleMouseMove: MouseEventHandler = (e) => {
@@ -103,7 +109,9 @@ const JiviWeightPicker = (props: JiviWeightPickerProps) => {
                     ref={pickerRef}
                     onMouseDown={handleMouseDown}
                     onMouseLeave={handleMouseLeave}
-                    onMouseUp={handleMouseUp}
+                    onMouseUp={(e) => {
+                        field.onChange(handleMouseUp(e))
+                    }}
                     onMouseMove={(e) => {
                         field.onChange(handleMouseMove(e))
                     }}
